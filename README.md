@@ -35,24 +35,24 @@ BlackShield follows a secure design model:
 
 ## 📂 Project Structure
 
-blackshield/
-├── main.py # Application entry point
-├── app.py # App controller
-├── auth.py # Master password & authentication logic
-├── encryptor.py # Encryption & key derivation logic
-├── vault.py # Vault operations
-├── totp.py # TOTP-based 2FA implementation
+blackshield/ \
+├── main.py # Application entry point\
+├── app.py # App controller\
+├── auth.py # Master password & authentication logic\
+├── encryptor.py # Encryption & key derivation logic\
+├── vault.py # Vault operations\
+├── totp.py # TOTP-based 2FA implementation\
+│\
+├── gui/\
+│ ├── screens/\
+│ │ ├── welcome.py\
+│ │ ├── login.py\
+│ │ ├── register.py\
+│ │ └── vault.py\
 │
-├── gui/
-│ ├── screens/
-│ │ ├── welcome.py
-│ │ ├── login.py
-│ │ ├── register.py
-│ │ └── vault.py
-│
-├── assets/ # QR code images & UI assets
-├── data/ # Encrypted vault storage (excluded from version control)
-├── LICENSE
+├── assets/ # QR code images & UI assets\
+├── data/ # Encrypted vault storage (excluded from version control)\
+├── LICENSE\
 └── README.md
 
 
@@ -70,48 +70,48 @@ blackshield/
 ```bash
 pip install -r requirements.txt
 python main.py
+```
+## 🔐 How It Works
 
-🔐 How It Works
+### Registration
 
-Registration
+1. User sets a master password
 
-User sets a master password
+2. A key is derived using a secure key derivation function
 
-A key is derived using a secure key derivation function
+3. A TOTP secret is generated for 2FA setup
 
-A TOTP secret is generated for 2FA setup
+4. Vault encryption key is created
 
-Vault encryption key is created
+### Login
 
-Login
+1. Master password is entered
 
-Master password is entered
+2. Encryption key is regenerated
 
-Encryption key is regenerated
+3. Encrypted vault file is decrypted
 
-Encrypted vault file is decrypted
+4. 2FA verification is required
 
-2FA verification is required
-
-Vault unlocks upon successful authentication
+5. Vault unlocks upon successful authentication
 
 
-🎯 Educational Purpose
+### 🎯 Educational Purpose
 
 BlackShield demonstrates:
 
-Practical encryption implementation
+- Practical encryption implementation
 
-Secure credential storage concepts
+- Secure credential storage concepts
 
-Two-factor authentication integration
+- Two-factor authentication integration
 
-Secure session timeout handling
+- Secure session timeout handling
 
-GUI-based security application design
+- GUI-based security application design
 
-📜 License
+# 📜 License
 
 This project is licensed under the MIT License.
 
-BlackShield is an extended and enhanced version of an MIT-licensed open-source vault application, redesigned with additional security features and UI improvements.
+BlackShield is an extended and enhanced version of an MIT-licensed open-source vault application "VectWord", redesigned with additional security features and UI improvements.
