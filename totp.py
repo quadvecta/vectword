@@ -1,25 +1,34 @@
-import pyotp
 import os
+import pyotp
 import qrcode
 
-TOTP_SECRET_FILE = "data/totp.secret"
+SECRET_FILE = "data/totp.secret"   # ✅ THIS WAS MISSING
 
 def setup_totp():
+    os.makedirs("data", exist_ok=True)
+    os.makedirs("assets", exist_ok=True)
+
     secret = pyotp.random_base32()
-    if not os.path.exists("data"):
-        os.makedirs("data")
-    with open(TOTP_SECRET_FILE, "w") as f:
+
+    with open(SECRET_FILE, "w") as f:
         f.write(secret)
 
-    totp_uri = pyotp.totp.TOTP(secret).provisioning_uri(name="VectwordUser", issuer_name="Vectword")
-    qr = qrcode.make(totp_uri)
-    qr.save("assets/totp_qr.png")
-    print("📷 Scan 'assets/totp_qr.png' with Google Authenticator.")
+    totp = pyotp.TOTP(secret)
+    uri = totp.provisioning_uri(
+        name="BlackShield",
+        issuer_name="BlackShield Password Manager"
+    )
+
+    qr = qrcode.make(uri)
+    qr_path = "assets/totp_qr.png"
+    qr.save(qr_path)
+
+    return qr_path
 
 def verify_totp(code):
-    if not os.path.exists(TOTP_SECRET_FILE):
+    if not os.path.exists(SECRET_FILE):
         return False
-    with open(TOTP_SECRET_FILE, "r") as f:
+    with open(SECRET_FILE, "r") as f:
         secret = f.read()
     totp = pyotp.TOTP(secret)
     return totp.verify(code)

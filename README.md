@@ -1,115 +1,117 @@
-# Vectword
+# 🛡 BlackShield
 
-**Vectword** is a secure, local password manager built with Python.  
-It features AES-256 encryption, TOTP-based two-factor authentication (2FA), and a simple command-line interface for managing credentials securely.
+**BlackShield** is a secure, desktop-based password manager built with Python and Tkinter.  
+It provides encrypted local credential storage, master password protection, Two-Factor Authentication (2FA), automatic session locking, and a secure password generator.
+
+BlackShield is designed as a security-focused application demonstrating encryption, authentication, and secure session management principles.
 
 ---
 
-## Features
+## 🚀 Features
 
 - 🔐 Master password authentication
-- 🛡️ AES-256 encryption for credential storage
-- 📱 Two-Factor Authentication using TOTP (compatible with Google Authenticator)
-- 🗂️ Add, view, and delete saved credentials
-- 📁 Local encrypted vault (no cloud storage)
+- 🛡 AES-256 encrypted vault storage
+- 📱 TOTP-based Two-Factor Authentication (Google Authenticator compatible)
+- ⏳ Automatic inactivity auto-lock system
+- 🔑 Cryptographically secure password generator (Python `secrets` module)
+- 📊 Password strength analyzer
+- 🖥 Modern Tkinter-based graphical interface
+- 📁 Fully local encrypted storage (no cloud dependency)
 
 ---
 
-## Getting Started
+## 🛡 Security Architecture
 
-### Prerequisites
+BlackShield follows a secure design model:
 
-- Python 3.7+
-- `pip` for dependency installation
+- The master password is never stored directly.
+- A secure key derivation function generates an encryption key.
+- Vault data is encrypted before being saved to disk.
+- The same password regenerates the same key for decryption during login.
+- TOTP-based 2FA adds an additional authentication layer.
+- Auto-lock protects the vault during inactivity.
 
-### Installation
+---
 
-1. Clone the repository:
+## 📂 Project Structure
 
-```bash
-git clone https://github.com/quadvecta/vectword.git
-cd vectword
-```
+blackshield/
+├── main.py # Application entry point
+├── app.py # App controller
+├── auth.py # Master password & authentication logic
+├── encryptor.py # Encryption & key derivation logic
+├── vault.py # Vault operations
+├── totp.py # TOTP-based 2FA implementation
+│
+├── gui/
+│ ├── screens/
+│ │ ├── welcome.py
+│ │ ├── login.py
+│ │ ├── register.py
+│ │ └── vault.py
+│
+├── assets/ # QR code images & UI assets
+├── data/ # Encrypted vault storage (excluded from version control)
+├── LICENSE
+└── README.md
 
-2. Install dependencies:
+
+---
+
+## ⚙️ Installation
+
+### Requirements
+
+- Python 3.8+
+- pip
+
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
-```
-
-3. Run the application:
-
-```bash
 python main.py
-```
 
----
+🔐 How It Works
 
-## Usage
+Registration
 
-### Register
+User sets a master password
 
-- Set a master password (stored as a hash)
-- A QR code will be generated for 2FA setup (scan with Google Authenticator)
+A key is derived using a secure key derivation function
 
-### Login
+A TOTP secret is generated for 2FA setup
 
-- Enter master password
-- Enter 6-digit 2FA code from your authenticator app
-- Access your encrypted vault
+Vault encryption key is created
 
-### Vault Commands
+Login
 
-| Command | Description                  |
-|---------|------------------------------|
-| `add`   | Add a new credential entry   |
-| `view`  | View all saved credentials   |
-| `delete`| Delete an existing entry     |
-| `exit`  | Exit and lock the vault      |
+Master password is entered
 
----
+Encryption key is regenerated
 
-## Project Structure
+Encrypted vault file is decrypted
 
-```
-vectword/
-├── main.py          # App entry point
-├── auth.py          # Master password logic
-├── encryptor.py     # AES encryption/decryption
-├── vault.py         # Vault operations
-├── totp.py          # TOTP-based 2FA
-├── requirements.txt
-├── assets/          # QR code image
-└── data/            # Encrypted vault (excluded from version control)
-```
+2FA verification is required
 
----
-
-## Dependencies
-
-- [cryptography](https://pypi.org/project/cryptography/)
-- [pyotp](https://pypi.org/project/pyotp/)
-- [qrcode](https://pypi.org/project/qrcode/)
-
-Install all with:
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## License
-
-This project is licensed under the MIT License.  
-You are free to use, modify, and distribute it for personal or educational purposes.
-
----
-
-## Disclaimer
-
-Vectword stores all data locally and does not include cloud syncing or remote backup features. Users are responsible for securely maintaining their vault file and 2FA setup.
+Vault unlocks upon successful authentication
 
 
+🎯 Educational Purpose
 
----
+BlackShield demonstrates:
+
+Practical encryption implementation
+
+Secure credential storage concepts
+
+Two-factor authentication integration
+
+Secure session timeout handling
+
+GUI-based security application design
+
+📜 License
+
+This project is licensed under the MIT License.
+
+BlackShield is an extended and enhanced version of an MIT-licensed open-source vault application, redesigned with additional security features and UI improvements.
