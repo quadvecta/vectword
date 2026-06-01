@@ -7,20 +7,20 @@ BlackShield is designed as a security-focused application demonstrating encrypti
 
 ---
 
-## 🚀 Features
+## Features
 
-- 🔐 Master password authentication
-- 🛡 AES-256 encrypted vault storage
-- 📱 TOTP-based Two-Factor Authentication (Google Authenticator compatible)
-- ⏳ Automatic inactivity auto-lock system
-- 🔑 Cryptographically secure password generator (Python `secrets` module)
-- 📊 Password strength analyzer
-- 🖥 Modern Tkinter-based graphical interface
-- 📁 Fully local encrypted storage (no cloud dependency)
+-  Master password authentication
+- AES-256 encrypted vault storage
+- TOTP-based Two-Factor Authentication (Google Authenticator compatible)
+- Automatic inactivity auto-lock system
+- Cryptographically secure password generator (Python `secrets` module)
+- Password strength analyzer
+- Modern Tkinter-based graphical interface
+- Fully local encrypted storage (no cloud dependency)
 
 ---
 
-## 🛡 Security Architecture
+##  Security Architecture
 
 BlackShield follows a secure design model:
 
@@ -33,7 +33,7 @@ BlackShield follows a secure design model:
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 blackshield/ \
 ├── main.py # Application entry point\
@@ -58,7 +58,7 @@ blackshield/ \
 
 ---
 
-## ⚙️ Installation
+## Installation
 
 ### Requirements
 
@@ -71,7 +71,7 @@ blackshield/ \
 pip install -r requirements.txt
 python main.py
 ```
-## 🔐 How It Works
+##  How It Works
 
 ### Registration
 
@@ -96,7 +96,7 @@ python main.py
 5. Vault unlocks upon successful authentication
 
 
-### 🎯 Educational Purpose
+###  Educational Purpose
 
 BlackShield demonstrates:
 
@@ -110,7 +110,7 @@ BlackShield demonstrates:
 
 - GUI-based security application design
 
-# 📜 License
+#  License
 
 This project is licensed under the MIT License.
 
